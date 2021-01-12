@@ -406,7 +406,9 @@ export default class HttpServer {
       // Payload processing
       const encoding = detectEncoding(request)
 
-      request.payload = request.payload && request.payload.toString(encoding)
+      // When passing binary data serverless offline seems to corrupt the images
+      // to avoid this we are commenting this line.
+      // request.payload = request.payload && request.payload.toString(encoding)
       request.rawPayload = request.payload
 
       // Incomming request message
